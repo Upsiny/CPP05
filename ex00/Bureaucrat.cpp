@@ -43,10 +43,22 @@ int         Bureaucrat::getGrade( void ) {
 }
 
 // functions
-void Bureaucrat::incrementGrade(/* arguments */) {
-
+void outOfBound(int a) {
+    if (a < 1 || a > 150)
+        throw "The grade is out of bound";
+    this->_grade = a;
 }
 
-void Bureaucrat::decrementGrade(/* arguments */) {
+void Bureaucrat::incrementGrade(int i) {
+    try
+        outOfBound(this->_grade - i);
+    catch (const char* e)
+        std::cout << "Error :" << e << std::endl;
+}
 
+void Bureaucrat::decrementGrade(int i) {
+    try
+        outOfBound(this->_grade + i);
+    catch (const char* e)
+        std::cout << "Error :" << e << std::endl;
 }

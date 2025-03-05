@@ -6,8 +6,8 @@
 
 class Bureaucrat {
 private:
-    std::string _name;
-    int         _grade;
+    const   std::string _name;
+    int                 _grade;
 
 public:
     Bureaucrat ( void );
@@ -18,14 +18,15 @@ public:
     Bureaucrat&          operator=(const Bureaucrat &src);
 
 //get & set
-    void setName(std::string Name);
-    void setGrade(int grade);
+    void        setName(std::string Name);
+    void        setGrade(int grade);
     std::string getName( void );
     int         getGrade( void );
 
 //functions
     void incrementGrade(/* arguments */);
     void decrementGrade(/* arguments */);
+    void outOfBound(/* arguments */);
 };
 
 #endif
