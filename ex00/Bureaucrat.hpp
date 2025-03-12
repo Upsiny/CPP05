@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 
 class Bureaucrat {
 private:
@@ -11,22 +12,31 @@ private:
 
 public:
     Bureaucrat ( void );
-    Bureaucrat (const Bureaucrat &src);
+    Bureaucrat (const std::string &name, int grade);
+    Bureaucrat (Bureaucrat const &src);
     virtual ~Bureaucrat ( void );
 
 //operator
-    Bureaucrat&          operator=(const Bureaucrat &src);
+    Bureaucrat&         operator=(const Bureaucrat &src);
 
-//get & set
-    void        setName(std::string Name);
-    void        setGrade(int grade);
-    std::string getName( void );
-    int         getGrade( void );
+//getter
+    std::string getName( void ) const;
+    int         getGrade( void ) const;
 
 //functions
-    void incrementGrade(/* arguments */);
-    void decrementGrade(/* arguments */);
-    void outOfBound(/* arguments */);
+    void incrementGrade();
+    void decrementGrade();
+    class	GradeTooHighException : public std::exception { // < 1
+			public:
+				virtual const char* what() const throw();
+		};
+
+	class	GradeTooLowException : public std::exception { // >150
+			public:
+				virtual const char* what() const throw();
+		};
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif
