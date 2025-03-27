@@ -69,6 +69,10 @@ void Bureaucrat::decrementGrade() {
 		this->_grade++;
 }
 
+void signForm(bureaucrat bureaucrat) {
+    
+}
+
 // operator <<
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {

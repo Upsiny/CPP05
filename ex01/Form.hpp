@@ -9,11 +9,13 @@
 class form {
 private:
     const   std::string _name;
-    int                 _grade;
+    int                 _gradeReq;
+    int                 _gradeExc;
+    bool                _signed;
 
 public:
     form ( void );
-    form (const std::string &name, int grade);
+    form (const std::string &name, int gradeReq, int gradeExc);
     form (form const &src);
     virtual ~form ( void );
 
@@ -22,11 +24,11 @@ public:
 
 //getter
     std::string getName( void ) const;
-    int         getGrade( void ) const;
+    int         getGradeReq( void ) const;
+    int         getGradeExc( void ) const;
 
 //functions
-    void incrementGrade();
-    void decrementGrade();
+    void        beSigned();
     class	GradeTooHighException : public std::exception { // < 1
 			public:
 				virtual const char* what() const throw();
