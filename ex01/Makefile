@@ -18,6 +18,7 @@ CXXFLAGS =		-Wall -Wextra -Werror -I. -g3 -fsanitize=address
 
 SRCS =			main.cpp				\
 				Bureaucrat.cpp			\
+				Form.cpp				\
 
 OBJS =			$(SRCS:.cpp=.o)
 

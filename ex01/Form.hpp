@@ -4,9 +4,11 @@
 #include <iostream>
 #include <string>
 #include <exception>
-# include "bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
-class form {
+class Bureaucrat ;
+
+class Form {
 private:
     const   std::string _name;
     int                 _gradeReq;
@@ -14,13 +16,13 @@ private:
     bool                _signed;
 
 public:
-    form ( void );
-    form (const std::string &name, int gradeReq, int gradeExc);
-    form (form const &src);
-    virtual ~form ( void );
+    Form ( void );
+    Form (const std::string &name, int gradeReq, int gradeExc);
+    Form (Form const &src);
+    virtual ~Form ( void );
 
 //operator
-    form&         operator=(const form &src);
+    Form&         operator=(const Form &src);
 
 //getter
     std::string getName( void ) const;
@@ -28,7 +30,7 @@ public:
     int         getGradeExc( void ) const;
 
 //functions
-    void        beSigned();
+    void        beSigned(const Bureaucrat &bureaucrat);
     class	GradeTooHighException : public std::exception { // < 1
 			public:
 				virtual const char* what() const throw();
@@ -40,6 +42,6 @@ public:
 		};
 };
 
-std::ostream& operator<<(std::ostream& os, const form& form);
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif
